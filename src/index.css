@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Athletic_Pro";
+  src: url("/fonts/Mandarin - Athletic Pro Variable.ttf");
+}

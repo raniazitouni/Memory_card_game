@@ -11,6 +11,7 @@ export default {
         "etic-green": "#009945",
         "etic-yellow": "#FDCD00",
         "etic-bleu": "#0060A9",
+        "etic-grey": "#EFEFEF",
       },
     },
   },

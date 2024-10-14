@@ -73,8 +73,38 @@ function App() {
   }, [choiceOne, choiceTwo]);
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
+    <div className="flex flex-col justify-center items-center font-atheletic">
+      <div className="text-center font-bold md:text-5xl text-4xl md:py-11 py-8 relative">
+        <img
+          src="/images/bleu_lego_title.svg"
+          alt="lego"
+          className="md:w-6 md:h-7 w-4 h-5 object-conatain absolute md:top-4 md:-left-6 top-6 -left-3"
+        />
+        MEMORY CARD GAME
+        <img
+          src="/images/yellow-lego-title.svg"
+          alt="lego"
+          className="md:w-12 md:h-14 w-8 h-9 object-conatain absolute md:bottom-2 md:-right-8 bottom-3 -right-5"
+        />
+      </div>
+      {isMobile && (
+        <div className="flex flex-row gap-16 pb-4">
+          <button
+            className="flex flex-row gap-1 text-etic-bleu font-atheletic text-2xl"
+            onClick={reOrderCards}
+          >
+            <img
+              src="/images/replay.svg"
+              alt="replay icon"
+              className="w-7 h-7 object-contain"
+            />
+            <p>Replay</p>
+          </button>
+          <p className=" text-etic-bleu  text-2xl">Moves: </p>
+        </div>
+      )}
+
+      <div className="grid grid-cols-3 md:grid-cols-6 gap-4 ">
         {cards.map((card) => (
           <Card
             key={card.id}
@@ -85,9 +115,22 @@ function App() {
           />
         ))}
       </div>
-      <button className="text-black " onClick={reOrderCards}>
-        replay
-      </button>
+      {!isMobile && (
+        <div className="flex flex-row gap-20 py-7">
+          <button
+            className="flex flex-row gap-1 text-etic-bleu font-atheletic text-3xl"
+            onClick={reOrderCards}
+          >
+            <img
+              src="/images/replay.svg"
+              alt="replay icon"
+              className="w-9 h-9 object-contain"
+            />
+            <p>Replay</p>
+          </button>
+            <p className=" text-etic-bleu  text-3xl">Moves: </p>
+        </div>
+      )}
     </div>
   );
 }

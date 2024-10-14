@@ -6,7 +6,7 @@ const Card = ({ card, handleChoice, flipped, disabled }) => {
   };
 
   return (
-    <div className="relative w-24 h-24 md:w-44 md:h-44">
+    <div className="relative w-24 h-24 xl:w-40 xl:h-40 lg:w-36 lg:h-36 md:w-28 md:h-28 ">
       <img
         src="/images/legoCharacter.svg"
         alt="back"

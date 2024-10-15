@@ -36,7 +36,10 @@ function App() {
   };
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+      reOrderCards();
+    };
     window.addEventListener("resize", handleResize);
     handleResize();
 
@@ -111,6 +114,7 @@ function App() {
       </div>
       {isMobile && (
         <div className="flex flex-row gap-16 pb-4">
+          {}
           <button
             className="flex flex-row gap-1 text-etic-bleu font-atheletic text-2xl"
             onClick={reOrderCards}

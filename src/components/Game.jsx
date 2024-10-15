@@ -4,15 +4,15 @@ import Card from "./Card";
 const Modal = lazy(() => import("./modal"));
 
 const cardsarr = [
+  { src: "/images/php.svg", paired: false },
+  { src: "/images/c.svg", paired: false },
+  { src: "/images/html.svg", paired: false },
   { src: "/images/java.svg", paired: false },
   { src: "/images/python.svg", paired: false },
   { src: "/images/ruby.svg", paired: false },
   { src: "/images/swift.svg", paired: false },
   { src: "/images/typescript.svg", paired: false },
   { src: "/images/cpp3.svg", paired: false },
-  { src: "/images/php.svg", paired: false },
-  { src: "/images/c.svg", paired: false },
-  { src: "/images/html.svg", paired: false },
 ];
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disabled, setDisabled] = useState(false);
-  const [moves , setMoves] = useState(0);
+  const [moves, setMoves] = useState(0);
   const [isModal, setIsModal] = useState(false);
   const [score, setScore] = useState(0);
 
@@ -51,8 +51,6 @@ function App() {
     setMoves(0);
   }, []);
 
- 
-
   const handleChoice = (card) => {
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
   };
@@ -77,25 +75,22 @@ function App() {
       setTimeout(() => {
         setChoiceOne(null);
         setChoiceTwo(null);
-        setMoves(prev => prev + 1 );
+        setMoves((prev) => prev + 1);
         setDisabled(false);
       }, 1000);
     }
   }, [choiceOne, choiceTwo]);
 
-   const maxScore = 1000;
-   const penalty = 10; 
+  const maxScore = 1000;
+  const penalty = 10;
 
-   useEffect(() => {
-     if (cards.length && cards.every((card) => card.paired)) {
-       const finalScore = Math.max(0, maxScore - moves * penalty);
-       setScore(finalScore)
-       setIsModal(true);
-     }
-   }, [cards]);
-
-   
-
+  useEffect(() => {
+    if (cards.length && cards.every((card) => card.paired)) {
+      const finalScore = Math.max(0, maxScore - moves * penalty);
+      setScore(finalScore);
+      setIsModal(true);
+    }
+  }, [cards]);
 
   return (
     <div className="flex flex-col justify-center items-center font-atheletic">
@@ -137,7 +132,12 @@ function App() {
             card={card}
             handleChoice={handleChoice}
             flipped={card.paired || card === choiceOne || card === choiceTwo}
-            disabled={disabled}
+            disabled={
+              disabled ||
+              card.paired ||
+              card === choiceOne ||
+              card === choiceTwo
+            }
           />
         ))}
       </div>

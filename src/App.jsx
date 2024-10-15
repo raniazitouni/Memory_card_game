@@ -4,10 +4,10 @@ import Game from './components/Game';
 import Modal from './components/modal';
 function App() {
   return (
-    // <Layout>
-    //   <Game />
-    // </Layout>
-    <Modal></Modal>
+    <Layout>
+      <Game />
+    </Layout>
+    // <Modal></Modal>
   );
 }
 

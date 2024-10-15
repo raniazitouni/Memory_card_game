@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+
 const Modal = ({ score, onReplay }) => {
+
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -8,38 +10,38 @@ const Modal = ({ score, onReplay }) => {
 
     return () => window.removeEventListener("resize", handleResize);
   }, [isMobile]);
+
   return (
-    <div className="fixed  inset-0 flex justify-center items-center ">
-      <div className="bg-white rounded-lg  shadow-lg p-8 max-w-sm w-96 border-[#009945] border-[3px] flex-col items-center text-center">
-        <div className="relative flex justify-center w-1/2 mx-auto mt-4 mb-10">
+    <div className="fixed inset-1 flex justify-center items-center ">
+      <div className="flex justify-center  bg-white rounded-3xl shadow-lg  md:w-[718px] md:h-96 w-72 h-72 border-etic-green border-4  flex-col items-center text-center">
+        <div className="text-center font-bold md:text-5xl text-2xl md:py-8 py-9 relative">
           <img
-            src="/images/Bleu_piece.svg"
-            className=" w-5 h-5 absolute -top-2 -left-7"
-          ></img>
-          <div className="text-4xl font-atheletic  font-semibold ">
-            Congratulations
-          </div>
+            src="/images/bleu_lego_title.svg"
+            alt="lego"
+            className="md:w-6 md:h-7 w-4 h-5 object-conatain absolute md:top-4 md:-left-6 top-6 -left-3"
+          />
+          Congratulations
           <img
-            src="/images/yallow_piece.svg"
-            className=" w-7 h-7 absolute -bottom-3 -right-7"
-          ></img>
+            src="/images/yellow-lego-title.svg"
+            alt="lego"
+            className="md:w-12 md:h-14 w-8 h-9 object-conatain absolute md:bottom-2 md:-right-8 bottom-3 -right-5"
+          />
         </div>
-        <div className="text-4xl text-etic-bleu font-atheletic mb-4">
+        <div className="md:text-4xl text-2xl text-etic-bleu font-atheletic md:my-4 my-0">
           YOUR SCORE IS&nbsp;:&nbsp;{score}
-          {300}
         </div>
         <button className="mb-4" onClick={onReplay}>
-          <div className="flex justify-center">
+          <div className="flex justify-center md:my-4 my-2">
             {" "}
-            <img src="/images/red-replay.svg" className=" w-9 h-9"></img>
-            <span className="text-3xl text-etic-red font-atheletic">
+            <img src="/images/red-replay.svg" className=" md:w-9 md:h-9 w-7 h-7 object-contain"></img>
+            <span className="md:text-4xl text-2xl text-etic-red font-atheletic">
               REPLAY
             </span>
           </div>
         </button>
 
         <div className="flex justify-center items-center">
-          <img src="/images/etic.svg" className=" w-10 h-10"></img>
+          <img src="/images/etic.svg" className=" md:w-16 md:h-16 w-10 h-10 object-contain"></img>
         </div>
       </div>
     </div>

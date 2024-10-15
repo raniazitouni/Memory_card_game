@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Layout = ({ children, moves }) => {
+const Layout = ({ children}) => {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -10,89 +10,65 @@ const Layout = ({ children, moves }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, [isMobile]);
   return (
-    <div>
-      {/* Top Left Corner */}
-      <div className="inset-x-0">
+    <div className="overflow-hidden relative">
+      {!isMobile && (
         <img
           src="/images/1.svg"
           alt="Corner 1"
-          className="w-auto h-auto object-contain"
+          className="absolute lg:top-0 -top-11 lg:-left-6 lg:w-96 lg:h-36 md:w-60 md:h-44 object-contain"
         />
-      </div>
-      {/* Center Top */}
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2">
-        <div className="text-center font-bold md:text-4xl text-4xl md:py-11 py-8 relative">
-          <img
-            src="/images/bleu_lego_title.svg"
-            alt="lego"
-            className="md:w-6 md:h-7 w-4 h-5 object-conatain absolute md:top-4 md:-left-6 top-6 -left-3"
-          />
-          MEMORY CARD GAME
-          <img
-            src="/images/yellow-lego-title.svg"
-            alt="lego"
-            className="md:w-12 md:h-14 w-8 h-9 object-conatain absolute md:bottom-2 md:-right-8 bottom-3 -right-5"
-          />
-        </div>
-      </div>
-      {/* Top Right Corner */}
-      <div className="absolute top-0 right-0 ">
+      )}
+      {!isMobile && (
         <img
           src="/images/2.svg"
           alt="Corner 2"
-          className="w-auto h-auto object-contain"
+          className=" absolute top-0 lg:right-0 -right-2  lg:w-60 lg:h-40 w-52 h-32 object-contain"
+        />
+      )}
+
+      <div>
+        <div className="">{children}</div>
+      </div>
+
+      {/* bottom left Corner */}
+      {!isMobile && (
+        <img
+          src="/images/4.svg"
+          alt="Corner 4"
+          className="absolute xl:-bottom-3 lg:-bottom-9 -bottom-8 left-0 xl:w-[511px] xl:h-64 lg:w-96 lg:h-60 w-72 h-48 object-contain -z-10"
+        />
+      )}
+      {isMobile && (
+        <img
+          src="/images/corner-mb1.svg"
+          alt="Corner 4"
+          className="absolute bottom-0 -left-1  w-28 h-36 object-contain -z-10"
+        />
+      )}
+      <div className="flex justify-center items-end">
+        <img
+          src="/images/etic.svg"
+          alt="etic logo "
+          className="md:w-20 md:h-20 w-16 h-16 md:mt-0 mt-20 md:mb-0 mb-5 object-contain"
         />
       </div>
 
-      <div>
-        {/* Main Content in the Center */}
-        <div className="mb-4">{children}</div>
-      </div>
-      <div className="  flex justify-between items-end">
-        {/* Bottom Left Corner */}
+      {/* bottom right Corner */}
+      {!isMobile && (
+        <img
+          src="/images/3.svg"
+          alt="Corner 3"
+          className="absolute right-0 -bottom-7  xl:w-[436px] xl:h-48 lg:w-96 lg:h-40 w-72 h-36 object-contain"
+        />
+      )}
 
-        <div className="w-1/3">
-          {/* Bottom Right Corner */}
-          <img
-            src="/images/4.svg"
-            alt="Corner 4"
-            className="w-auto h-auto object-contain"
-          />
-        </div>
-        <div className="object-center">
-          {!isMobile && (
-            <div className="flex flex-row w-1/3 justify-between gap-20 py-7 pr">
-              <button className="flex flex-row gap-1 text-etic-bleu font-atheletic text-3xl">
-                <img
-                  src="/images/replay.svg"
-                  alt="replay icon"
-                  className="w-9 h-9 object-contain"
-                />
-                <p>REPLAY</p>
-              </button>
-              <div className=" text-etic-bleu font-atheletic text-3xl font-medium">
-                MOVES&nbsp;:&nbsp;{400}
-              </div>
-            </div>
-          )}
-          <div className="ml-14">
-            <img
-              src="/images/etic.svg"
-              alt="Center Bottom"
-              className="w-15 h-15 object-contain"
-            />
-          </div>
-        </div>
-        <div className="mt-5 w-1/3">
-          <img
-            src="/images/3.svg"
-            alt="Corner 3"
-            className="w-auto h-auto object-contain"
-          />
-        </div>
-
-        {/* Bottom Center */}
-      </div>
+      {isMobile && (
+        <img
+          src="/images/corner-mb-2.svg"
+          alt="Corner 4"
+          className="absolute bottom-0 right-0 w-28 h-36 object-contain -z-10"
+        />
+      )}
     </div>
   );
 };
